@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{87884d95-d73b-49f4-b2e7-2953bcee9094}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{b3679346-23d0-4a2f-8b80-7dd5015d68ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{2c51e2c6-55c2-4fac-aabd-d728e5d52a24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="reference">
+      <UniqueIdentifier>{543b246c-a9c2-4a9c-853d-a6cc3d4b4a39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="static">
+      <UniqueIdentifier>{98c302a5-3629-49b4-8308-5d0cfd4719c9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CmakeLists.txt" />
+  </ItemGroup>
+</Project>

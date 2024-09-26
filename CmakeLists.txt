@@ -1,0 +1,33 @@
+cmake_minimum_required(VERSION 3.6)
+project(LearnOpenGL)
+set(CMAKE_CXX_STANDARD 11)
+
+# 头文件
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/tools)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/geometry)
+#add_subdirectory(tools)
+#target_link_libraries(demo tools)
+
+
+# 源文件
+set(GLAD ${CMAKE_CURRENT_SOURCE_DIR}/src/glad.c)                   # glad
+file(GLOB IMGUI ${CMAKE_CURRENT_SOURCE_DIR}/include/imgui/*.cpp)   # imgui
+file(GLOB_RECURSE MAINS ${CMAKE_CURRENT_SOURCE_DIR}/src/**/*.cpp)  # main
+
+# 链接库路径
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib)
+
+
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/output)  #可执行程序输出路径
+# 循环遍历每个含main的文件，分别编译生成exe文件
+foreach(mainfile ${MAINS})
+    get_filename_component(dirname ${mainfile} PATH)       # 获取目录
+    get_filename_component(mainname ${mainfile} NAME_WE)   # 获取文件名
+    set(fullpath ${dirname} "_" ${mainname})               # 拼接目录与文件名
+    string(REPLACE ${CMAKE_CURRENT_SOURCE_DIR}/src/ "" finalname ${fullpath})     # 把fullpath前面的路径用空串代替
+    # message(${finalname})  # 日志
+    add_executable(${finalname} ${mainfile} ${GLAD} ${IMGUI})        # 生成可执行程序
+    target_link_libraries(${finalname} PRIVATE glfw3.lib )           # 链接动态库
+    target_link_libraries(${finalname} PRIVATE assimp-vc143-mtd.dll)   # 链接动态库
+endforeach()
